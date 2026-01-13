@@ -95,7 +95,23 @@ vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int 
 //3)Try Extreme test cases min and max
 //A)Brute Force B)Math with optimization C) Math with implemention
 
-
+void solve(){
+    int a, b, c;
+    cin >> a >> b >> c;
+    int x = a, y = b, z = c;
+    if(a > b) swap(a,b);
+    if(b > c){
+        swap(b,c);
+        if(a > c) swap(a, c);
+    }
+    cout<< a << endl;
+    cout<< b << endl;
+    cout<< c << endl;
+    cout<<endl;
+    cout<< x << endl;
+    cout<< y << endl;
+    cout<< z << endl;
+}
 
 signed main(){
     #ifndef ONLINE_JUDGE
@@ -103,7 +119,7 @@ freopen("Error.txt", "w", stderr);
 #endif
     code by Adity
     int t;cin>>t;
-    while(t--){
+    while(1--){
         solve();
     }
 }
