@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+#define ff front.first
+#define ss front.second
 bool compare(pair<pair<int, int>, int>& a, pair<pair<int, int>, int>& b){
     return a.ff.ss < b.ff.ss;
 }
