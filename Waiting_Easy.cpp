@@ -91,7 +91,20 @@ vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 void solve(){
-
+    int n; cin >> n;
+    ll tt = 0;
+    ll ct = 0;
+    fr(i, 0, n-1){
+        ll a; cin >> a;
+        if(ct < a){
+            ct = a;
+        
+        }
+        else{
+            tt += (ct - a);
+        }
+    }
+    cout << tt << "\n";
 }
 signed main(){
     #ifndef ONLINE_JUDGE

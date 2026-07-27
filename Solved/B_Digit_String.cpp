@@ -47,7 +47,7 @@ istream& operator>>(istream &istream, vector<T> &v){for (auto &it : v) cin >> it
 template<typename T1, typename T2> // cout << pair<T1, T2>
 ostream& operator<<(ostream &ostream, const pair<T1, T2> &p) { return (ostream << p.first << " " << p.second); }
 template<typename T> // cout << vector<T>
-ostream& operator<<(ostream &ostream, const vector<T> &c) { for (auto &it : c) cout << it << " "; return ostream; }
+ostream& operator<<(ostream &ostream, const vector<T> &ch) { for (auto &it : ch) cout << it << " "; return ostream; }
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 ll gcd(ll a, ll b){if (b == 0)return a;return gcd(b, a % b);}
 ll lcm(ll a, ll b){return (a/gcd(a,b)*b);}
@@ -91,7 +91,21 @@ vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 void solve(){
-
+    string s; cin >> s;
+    int ans = 0;
+    for (char ch : s) if (ch == '1' || ch == '3') ans++;
+    int maxx = ans;
+    int _2s = 0;
+    int _31s = ans;
+    for (char ch : s) {
+        if (ch == '3' || ch == '1') {
+            _31s--;
+        } else if (ch == '2') {
+            _2s++;
+        }
+        maxx = max(maxx, _31s + _2s);
+    }
+    cout << s.size() - maxx << "\n";
 }
 signed main(){
     #ifndef ONLINE_JUDGE

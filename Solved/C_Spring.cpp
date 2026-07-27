@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+ #define ll long long
+using namespace std;
+ 
+ll getOne(ll a, ll m)
+{
+    return m / a;
+}
+ 
+ll getTwo(ll a, ll b, ll m)
+{
+    return m / lcm(a, b);    
+}
+ 
+ll getThree(ll a, ll b, ll c, ll m)
+{
+    return m / lcm(lcm(a, b), c);
+}
+ 
+ll get(int a, ll b, ll c, ll m)
+{
+    ll c1 = getOne(a, m);
+    ll c2 = getTwo(a, b, m) + getTwo(a, c, m);
+    ll c3 = getThree(a, b, c, m);
+    return (c1 - c2 + c3) * 6 + (c2 - 2 * c3) * 3 + c3 * 2;
+}
+ 
+void solve()
+{
+    ll a, b, c, m;
+    cin >> a >> b >> c >> m;                                                                      
+    cout << get(a, b, c, m) << " " << get(b, a, c, m) << " " << get(c, a, b, m) << endl;
+}
+ 
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
+    cin >> t;
+    for(int i = 0; i < t; i++)
+        solve();
+    return 0;
+}

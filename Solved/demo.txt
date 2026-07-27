@@ -1,0 +1,707 @@
+1.
+Question 1
+Which of these are essential characteristics of the cloud? Select the two characteristics that apply.
+
+
+
+Broad network access
+
+Resource pooling
+
+Limited service
+
+Static access
+
+1 point
+2.
+Question 2
+In the __________ cloud model, the cloud provider provisions the cloud infrastructure for exclusive use by a single organization.
+
+
+
+Public
+
+Private
+
+Hybrid
+
+Hybrid multicloud
+
+1 point
+3.
+Question 3
+Virtualization is the process of creating a software-based version of physical resources, made possible through the use of ___________________.
+
+
+
+Hypervisors
+
+Load balancers
+
+APIs
+
+Third-party plugins
+
+1 point
+4.
+Question 4
+Which of the following is the correct order of the three basic steps of containerization?
+
+
+
+Create a manifest (Dockerfile), Create the image, Create the container
+
+Create the container, Create a manifest (Dockerfile), Create the image
+
+Create the image, Create the container, Create a manifest (Dockerfile)
+
+Create the image, Create a manifest (Dockerfile), Create the container
+
+1 point
+5.
+Question 5
+Which type of cloud storage can be mounted on multiple servers at once?
+
+
+
+Object storage
+
+File storage
+
+Direct attached storage
+
+Block storage
+
+1 point
+6.
+Question 6
+Why front-end developers use cascading style sheets (CSS) for a website?
+
+
+
+To style the website and make it more appealing
+
+To render the website’s pages more quickly and efficiently
+
+To create the physical structure of the website
+
+To add interactivity to the website
+
+1 point
+7.
+Question 7
+When does the server return error 404?
+
+
+
+When the server does not understand the request
+
+When the request from the front end arrives at the back end, and the endpoint is missing.
+
+When the routing fails
+
+When the user does not have an account
+
+1 point
+8.
+Question 8
+Which HTML tag should you use for additional information that is related to the page's main discussion?
+
+
+
+<sup>
+
+<details>
+
+<aside>
+
+<canvas>
+
+1 point
+9.
+Question 9
+In JavaScript, what is the use of the typeof operator?
+
+
+
+Report the type of error that has occurred
+
+Show the type of elements in an array
+
+Convert the type of object to a different type
+
+Determine the data type of the supplied operand
+
+1 point
+10.
+Question 10
+Which of the following is a correctly formatted variable name or identifier in JavaScript?
+
+
+
+newCustomer1
+
+1newCustomer
+
+newCustomer#1
+
+“new1Customer”
+
+1 point
+11.
+Question 11
+Which of the following is a popular web-hosted service for Git repositories? Select all that apply.
+
+
+
+Beanstalk
+
+Vault
+
+GitLab
+
+BitBucket
+
+1 point
+12.
+Question 12
+Which of the following is a feature of the Git repository model?
+
+
+
+Two-tree system
+
+Source code tracking
+
+Strict linear workflow
+
+Centralized version control
+
+1 point
+13.
+Question 13
+Assume you are a developer on a GitHub project, and on your computer, you have a cloned copy of the GitHub repository. After editing several files in your local repository, what is the first step you must take to push your changes back to GitHub?
+
+
+
+Delete your working directory.
+
+Update the README file.
+
+Create a new master branch.
+
+Use the add command.
+
+1 point
+14.
+Question 14
+What is the function of the git fetch command?
+
+
+
+git fetch transfers changes from the remote repository to remote-tracking local branches.
+
+git fetch creates a summary of edits for the remote repository to pull from local repositories.
+
+git fetch performs a search to find a commit that has caused a bug in the project.
+
+git fetch prepares and sends suggested alternatives to all project contributors.
+
+1 point
+15.
+Question 15
+In a Git team project, which team member uses the git-daemon command as part of their responsibilities?
+
+
+
+Billing manager
+
+Developer
+
+Repository administrator
+
+Integrator
+
+1 point
+16.
+Question 16
+Which of the following is not a package used to build React applications?
+
+
+
+JSX
+
+Babel
+
+ReactDOM
+
+React
+
+1 point
+17.
+Question 17
+Which of the following is a disadvantage of testing React components?
+
+
+
+Modular construction of applications
+
+Prevention from unexpected regression
+
+Requirement of writing more code
+
+Reduction in need for manual verification
+
+1 point
+18.
+Question 18
+Which of the following is true for hooks?
+
+
+
+They use Node version 5.
+
+They can be conditional.
+
+They can only be called inside React function components.
+
+They can be called inside functions.
+
+1 point
+19.
+Question 19
+________ are JSON objects that contain information about changes that need to be made to the state.
+
+
+
+States
+
+Actions
+
+Stores
+
+Reducers
+
+1 point
+20.
+Question 20
+Which of the following Redux elements are involved in updating the component properties? Select all that apply.
+
+
+
+Center store
+
+Actions
+
+Reducer
+
+UI components
+
+1 point
+21.
+Question 21
+What does JSON stand for?
+
+
+
+JavaScript Open Node
+
+JavaScript Open Notation
+
+JavaScript Object Notation
+
+JavaScript Outbound Node
+
+1 point
+22.
+Question 22
+Which of the following actions you should execute to make a function or a value available to Node.js applications that import your module?
+
+
+
+Add a property to the implicit exports object
+
+Call required with the name of a subdirectory
+
+Use the require function with a relative path to the script file
+
+Do nothing, it happens automatically
+
+1 point
+23.
+Question 23
+The initial state of a promise object is _________________.
+
+
+
+Pending
+
+Rejected
+
+Blocked
+
+Resolved
+
+1 point
+24.
+Question 24
+What purpose does a router serve?
+
+
+
+Determines what is done after a function is executed
+
+Assists the server in handling queries
+
+Determines the order in which middleware is chained
+
+Handles errors
+
+1 point
+25.
+Question 25
+Which of the following characteristics is associated with Express handling multiple operation requests concurrently?
+
+
+
+Bidirectional data exchange
+
+Asynchronous programming
+
+Third-party built-in plugin
+
+Content negotiation
+
+1 point
+26.
+Question 26
+What is the result of running the following lines of code?
+
+class Points(object):
+
+         def __init__(self,x,y):
+
+            self.x=x
+
+            self.y=y
+
+         def print_point(self):
+
+             print('x=',self.x,' y=',self.y)
+
+p1=Points("Q","Z")
+
+p1.print_point()
+
+
+
+x=Q y=Z
+
+y=Z
+
+x=y
+
+x=Q
+
+1 point
+27.
+Question 27
+Say you have a list named myList with these elements: [“John”, “Ralph”, “Leia”, “Simone”]. Which of the following shows the correct code for printing out the Leia element? Select two that apply.
+
+
+
+print(myList[3])
+
+print(myList[2])
+
+print(myList[-1])
+
+print(myList[-2])
+
+1 point
+28.
+Question 28
+In the following code, if x=4, what is the output?
+
+if(x > 3):
+
+  print('Hello')
+
+else:
+
+  print('Bye')
+
+print('Hillary')
+
+
+
+Hello
+
+Hello 
+
+Hillary
+
+Bye 
+
+Hillary
+
+Bye
+
+1 point
+29.
+Question 29
+When using the open() function, what is the purpose of passing the parameter ‘a+’ into it?
+
+
+
+Reading and writing. It cannot truncate the file.
+
+Opening and reading. Creates a new file if none exists.
+
+Appending and reading. It creates a new file if none exists.
+
+Writing and reading. It truncates the file.
+
+1 point
+30.
+Question 30
+What does the following code do to an HTML string that is saved in a variable named “html” and uses the Python library “BeautifulSoup?”
+
+          soup = BeautifulSoup(html, "html.parser")
+
+          print(soup.prettify())
+
+
+
+It prints out the html.parser object.
+
+It assigns the name “html.parser” to the soup instance.
+
+It prints out the BeautifulSoup object as a nested data structure.
+
+It assigns the name “html” to the soup instance.
+
+1 point
+31.
+Question 31
+How does an entity-attribute model map to a relational database model?
+
+
+
+Entities map to tables, and attributes map to columns.
+
+Entities map to columns, and attributes map to tables.
+
+Entities map to columns, and attributes map to rows.
+
+Entities map to tables, and attributes map to rows.
+
+1 point
+32.
+Question 32
+Which statement is true regarding OOP and CRUD?
+
+
+
+OOP performs CRUD on data using statements like “insert,” “delete,” and “update.”
+
+OOP performs CRUD on data using methods.
+
+OOP performs CRUD on data using data manipulation language
+
+OOP performs CRUD on data using class patterns like inheritance, association, and aggregation.
+
+1 point
+33.
+Question 33
+What else does the Django template contain besides Python code?
+
+
+
+Markdown elements
+
+XML elements
+
+Dynamic HTML elements
+
+Static HTML elements
+
+1 point
+34.
+Question 34
+When you create a Django project, Django creates some core files, including manage.py. What purpose does manage.py serve?
+
+
+
+It provides a command line interface so you can interact with the Django project.
+
+It creates markdown elements.
+
+It contains the URL and routing definitions of your Django app.
+
+It contains the settings and configurations for your Django project.
+
+1 point
+35.
+Question 35
+Which statement best describes Bootstrap?
+
+
+
+It is a type of relational database.
+
+It is a Django template.
+
+It is mainly used for serverless computing.
+
+It provides well-designed and commonly used HTML and CSS templates.
+
+1 point
+36.
+Question 36
+Some of the common Docker CLI commands include___________ for creating container images and ___________ for retrieving images from a configured registry.
+
+
+
+build, pull
+
+run, pull
+
+images, pull
+
+images, push
+
+1 point
+37.
+Question 37
+Which of the following is an open-source system for automating deployment, scaling, and management of containerized applications?
+
+
+
+Kubernetes
+
+OpenShift
+
+Apache Hadoop
+
+Docker
+
+1 point
+38.
+Question 38
+Which command in a Dockerfile provides a default for executing a container, and there can only be one such command in the file?
+
+
+
+CMD
+
+FROM
+
+ADD
+
+RUN
+
+1 point
+39.
+Question 39
+Which of the following are true for the apply command? Select all that apply.
+
+
+
+It requires a file or directory of files.
+
+It infers that a new deployment needs to be created.
+
+It is namespace-scoped
+
+It is declarative.
+
+1 point
+40.
+Question 40
+What is Red Hat OpenShift?
+
+
+
+A project, not a product
+
+A hybrid cloud, enterprise-ready Kubernetes container platform
+
+A narrowly focused utility that provides a few services
+
+A crucial component of Kubernetes
+
+1 point
+41.
+Question 41
+Modern software development often uses the following along with the twelve-factor application methodology?
+
+
+
+SaaS
+
+Microservices
+
+Monoliths
+
+Databases deployed on VMs
+
+1 point
+42.
+Question 42
+Which of the following API gateway is managed by Google?
+
+
+
+Apache APISIX
+
+Gloo
+
+Apigee
+
+Azure API Management
+
+1 point
+43.
+Question 43
+What are the three main components of serverless stack? Select all that apply.
+
+
+
+API Gateway
+
+SaaS
+
+BaaS
+
+FaaS
+
+1 point
+44.
+Question 44
+Which of the following is a potential benefit of an IBM Cloud Code Engine?
+
+
+
+It is the best fit for complex and customized application workloads.
+
+It manages applications with high resource requirements.
+
+It is suitable for applications that require constant availability or have background processes that need to run indefinitely.
+
+It takes care of the cluster management.
+
+1 point
+45.
+Question 45
+Which statement best describes OpenShift?
+
+
+
+It extends Kubernetes using CRDs.
+
+It is a dedicated layer for making service-to-service communication secure and reliable.
+
+It is an IT architecture that incorporates workload portability, orchestration, and management.
+
+It is a hybrid, cloud, enterprise Kubernetes application platform.

@@ -91,7 +91,20 @@ vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 void solve(){
-
+    int n; cin >> n;
+    vec a(n);   cin >> a;
+    
+    int l = 0, r = n - 1;
+    int target_sum = a[l] + a[r];
+    
+    while(l < r) {
+        if(a[l++] + a[r--] != target_sum) {
+            pn;
+            return;
+        }
+    }
+    
+    py;
 }
 signed main(){
     #ifndef ONLINE_JUDGE

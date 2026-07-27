@@ -1,0 +1,13 @@
+# VS Code / CPH
+.cph/
+*.prob
+
+# Clang
+.clangd
+
+# Executables
+*.exe
+*.out
+
+# Object files
+*.o

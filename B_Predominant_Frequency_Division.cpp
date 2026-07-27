@@ -91,7 +91,27 @@ vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 void solve(){
+        int n; cin >> n;
+        vector<int> a(n+1);
+        for(int i=1;i<=n;i++) cin >> a[i];
+        
+        vector<int> F(n+1, 0), G(n+1, 0);
+        for(int i=1;i<=n;i++){
+            F[i] = F[i-1] + (a[i]==1 ? 1 : -1);
+            G[i] = G[i-1] + ((a[i]==1 || a[i]==2) ? 1 : -1);
+        }        
+        vector<int> sufMax(n+2, INT_MIN);
+        sufMax[n - 1] = G[n - 1];
+        for(int k=n-2;k>=1;k--) sufMax[k] = max(G[k], sufMax[k+1]);
 
+        bool ok = false;
+        for(int i=1;i<=n-2;i++){
+            if(F[i] >= 0 && sufMax[i+1] >= G[i]){
+                ok = true;
+                break;
+        }
+    }
+        cout << (ok ? "YES\n" : "NO\n");
 }
 signed main(){
     #ifndef ONLINE_JUDGE

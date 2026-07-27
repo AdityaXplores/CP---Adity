@@ -91,12 +91,28 @@ vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 void solve(){
-
+    ll n, m;
+    cin >> n >> m;
+    if ((n + 1) % 6 == 0 || (n + 1) % 6 == 3) {
+        fr(i, 1, n) {
+            ll val = i % 6;
+            if (val == 1 || val == 2) {
+                cout << 1 << " ";
+            } else if (val == 4 || val == 5) {
+                cout << m - 1 << " ";
+            } else {
+                cout << 0 << " ";
+            }
+        }
+        cout << "\n";
+    } else {
+        cout << -1 << "\n";
+    }
 }
 signed main(){
     #ifndef ONLINE_JUDGE
-freopen("Error.txt", "w", stderr);
-#endif
+    freopen("Error.txt", "w", stderr);
+    #endif
     code by Aditya
     int t;cin>>t;
     while(t--){

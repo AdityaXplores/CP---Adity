@@ -21,7 +21,6 @@ typedef map<ll,ll> mll;
 typedef pair<int,int> p;
 typedef vector<int> vec;
 typedef vector<p> vecp;
-typedef vector<string> vs;
 typedef unordered_map<int,int> um;
 typedef map<int,int> m;
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -91,14 +90,64 @@ vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 void solve(){
+    int n; cin >> n;
+    string s; cin >> s;
+    if(s[n - 2] != s[n - 1]) {
+    pm;
+    return;
+}
 
+if(n >= 3 && s[n - 3] == '0' && s[n - 2] == '1') {
+    pm;
+    return;
+}
+
+int pairs = (n - 1) / 2;
+int k = 2 + 3 * pairs;
+
+vs g(k, string(n, '0'));
+
+if(s[n - 1] == '0') {
+    g[1][n - 1] = '1';
+}
+
+fr(i, 1, pairs) {
+    int pa = 2 * i - 1;
+    int pb = 2 * i;
+    int ca = pa;
+    int cb = pb;
+    int r = k - 3 * i;
+
+    bool losea = false, loseb = false;
+
+    if(pa <= n - 2) losea = (s[pa - 1] == '0');
+    if(pb <= n - 2) loseb = (s[pb - 1] == '0');
+
+    if(losea) {
+        g[r + 2][ca] = '1';
+    }
+    if(losea || loseb) {
+        if(cb < n) {
+            g[r + 1][cb] = '1';
+        }
+    }
+    if(loseb) {
+        if(cb + 1 < n) {
+            g[r][cb + 1] = '1';
+        }
+    }
+}
+cout << k << "\n";
+fr(i, 0, k - 1) {
+    cout << g[i] << "\n";
+}
 }
 signed main(){
     #ifndef ONLINE_JUDGE
-freopen("Error.txt", "w", stderr);
-#endif
+    freopen("Error.txt", "w", stderr);
+    #endif
     code by Aditya
-    int t;cin>>t;
+    int t; cin >> t;
     while(t--){
         solve();
     }

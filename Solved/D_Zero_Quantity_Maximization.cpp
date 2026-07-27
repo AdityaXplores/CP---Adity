@@ -19,25 +19,29 @@ typedef unordered_map<ll,ll> umll;
 typedef map<ll,ll> mll;
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 //stl containers
-typedef pair<int,int> p;
-typedef vector<int> vec;
+typedef pair<ll,ll> p;
+typedef vector<ll> vec;
 typedef vector<p> vecp;
 typedef vector<string> vs;
-typedef unordered_map<int,int> um;
-typedef map<int,int> m;
+typedef unordered_map<ll,ll> um;
+typedef map<ll,ll> m;
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 #define ff first
 #define ss second
 #define pb push_back
-#define cut pop_back
-#define fr(i,st,end) for(int i=st;i<=end;i++)
-#define frr(i,st,end) for(int i=st;i>=end;i--)
+#define qb pop_back
+#define pf push_front
+#define qf pop_front
+#define fr(i,st,end) for(ll i=st;i<=end;i++)
+#define frr(i,st,end) for(ll i=st;i>=end;i--)
 #define py cout<<"YES\n";
 #define pm cout<<"-1\n";
 #define pn cout<<"NO\n";
-#define sort(x) sort(x.begin(),x.end());
-#define rsort(x) sort(x.begin(),x.end(),greater<int>());
-#define sz(x) ((int)(x).size());
+#define maxe max_element
+#define mine min_element
+#define sort(x) sort((x).begin(), (x).end())
+#define rsort(x) sort((x).begin(), (x).end(), greater<ll>())
+#define sz(x) ((ll)(x).size());
 #define all(x) (x).begin(), (x).end()
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 //operators overloads
@@ -54,8 +58,8 @@ ll gcd(ll a, ll b){if (b == 0)return a;return gcd(b, a % b);}
 ll lcm(ll a, ll b){return (a/gcd(a,b)*b);}
 ll modMul(ll a,ll b,ll mod){ll res = 0;a %= mod;while (b){if (b & 1)res = (res + a) % mod;b >>= 1;}return res;}
 ll powermod(ll x, ll y, ll p){ll res = 1;x = x % p;if (x == 0) return 0;while (y > 0){if (y & 1)res = (res*x) % p;y = y>>1;x = (x*x) % p;}return res;}
-bool isPrime(ll n){if(n<=1)return false;if(n<=3)return true;if(n%2==0||n%3==0)return false;for(int i=5;i*i<=n;i=i+6)if(n%i==0||n%(i+2)==0)return false;return true;}
-bool isPowerOfTwo(int n){if(n==0)return false;return (ceil(log2(n)) == floor(log2(n)));}
+bool isPrime(ll n){if(n<=1)return false;if(n<=3)return true;if(n%2==0||n%3==0)return false;for(ll i=5;i*i<=n;i=i+6)if(n%i==0||n%(i+2)==0)return false;return true;}
+bool isPowerOfTwo(ll n){if(n==0)return false;return (ceil(log2(n)) == floor(log2(n)));}
 ll numberOfDigits(ll n){return floor(log10(n)) + 1;}
 bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}return false;}
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -64,13 +68,7 @@ bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}r
 #else
 #define debug(x)
 #endif
-void _print(ll t) {cerr << t;}
-void _print(int t) {cerr << t;}
-void _print(string t) {cerr << t;}
-void _print(char t) {cerr << t;}
-void _print(lld t) {cerr << t;}
-void _print(double t) {cerr << t;}
-void _print(ull t) {cerr << t;}
+
 template <class T, class V> void _print(pair <T, V> p);
 template <class T> void _print(vector <T> v);
 template <class T> void _print(set <T> v);
@@ -83,14 +81,14 @@ template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_pr
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 //binary search section
-int LB(vector<ll>arr,ll key){auto lower = lower_bound(arr.begin(), arr.end(), key); if (lower != arr.end()) {return lower - arr.begin(); } return -1; }
-int UB(vector<ll>arr,ll key){auto upper = upper_bound(arr.begin(), arr.end(), key);if (upper != arr.begin()&&(upper-arr.begin())<arr.size()) {return upper - arr.begin();}return -1;}
-bool checkerFunction(int x,vector<int>&arr){return true;}
-int BSAns(int st,int end,vector<int>arr){int ans=-1;while(st<=end){int mid=st+(end-st)/2;if(checkerFunction(mid,arr)){ }else{}}return ans;}
+ll LB(vector<ll>arr,ll key){auto lower = lower_bound(arr.begin(), arr.end(), key); if (lower != arr.end()) {return lower - arr.begin(); } return -1; }
+ll UB(vector<ll>arr,ll key){auto upper = upper_bound(arr.begin(), arr.end(), key);if (upper != arr.begin()&&(upper-arr.begin())<arr.size()) {return upper - arr.begin();}return -1;}
+bool checkerFunction(ll x,vector<ll>&arr){return true;}
+ll BSAns(ll st,ll end,vector<ll>arr){ll ans=-1;while(st<=end){ll mid=st+(end-st)/2;if(checkerFunction(mid,arr)){ }else{}}return ans;}
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 //prefix suffix section 1 based
-vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=1;i<=arr.size();i++){ans[i]=arr[i]+ans[i-1];}return ans;}
-vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
+vector<ll> buildPrefix(vector<ll>&arr){vector<ll>ans(arr.size(),0);for(ll i=1;i<=arr.size();i++){ans[i]=arr[i]+ans[i-1];}return ans;}
+vector<ll> buildSuffix(vector<ll>&arr){vector<ll>ans(arr.size()+1,0);for(ll i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 //1)Try Sample Test Cases
 //2)Dry run on Each Sample Test Case
@@ -99,32 +97,46 @@ vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int 
 
 void solve(){
     //code here
-        ll x, y;
-        cin >> x >> y;  // Read coordinates (x, y)
-        ll ans;
-        if (x <= y) {
-            // Vertical Line Values : Border Cell -- Top Right
-            if (y % 2 == 0) {
-                ans = (y - 1) * (y - 1) + x;
-            } else {
-                ans = y * y - x + 1;
-            }
-        } else {
-            // Horizontal Line Values : Border Cell -- Bottom Left
-            if (x % 2 == 0) {
-                ans = x * x - y + 1;
-            } else {
-                ans = (x - 1) * (x - 1) + y;
-            }
+    ll n;
+    cin >> n;
+    vector<ll> a(n), b(n);
+    for (auto &i : a)
+        cin >> i;
+    for (auto &i : b)
+        cin >> i;
+    map<pair<ll, ll>, ll> mp;
+    ll ans = 0;
+    for (ll i = 0; i < n; i++) {
+        if (a[i] == 0) {
+            if (b[i] == 0)
+                ans++;
+            continue;
         }
-        cout << ans << "\n";
+        ll p = -b[i], q = a[i];
+        ll g = __gcd(abs(p), abs(q));
+        p /= g;
+        q /= g;
+        if (q < 0 || (p < 0 && q < 0)) {
+            p *= -1;
+            q *= -1;
+        }
+        mp[{p, q}]++;
+    }
+    ll mx = 0;
+    for (auto it : mp) {
+        mx = max(mx, it.second);
+    }
+    ans += mx;
+    cout << ans << '\n';
 }
 int32_t main(){
     #ifndef ONLINE_JUDGE
     freopen("Error.txt", "w", stderr);
     #endif
     code by Adity
-    int t; cin >> t;
+    ll t; 
+    t  =1;
+
     while(t--){
         solve();
     }

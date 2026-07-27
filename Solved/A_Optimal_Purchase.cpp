@@ -21,7 +21,6 @@ typedef map<ll,ll> mll;
 typedef pair<int,int> p;
 typedef vector<int> vec;
 typedef vector<p> vecp;
-typedef vector<string> vs;
 typedef unordered_map<int,int> um;
 typedef map<int,int> m;
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -91,12 +90,19 @@ vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 void solve(){
+    ll n, a, b;
+    cin >> n >> a >> b;
+    ll x = n * a;
+    ll y = (n /3) * b + a *(n % 3);
+    ll z = ((n + 2) / 3) * b; 
 
+    cout << min({x, y, z}) << "\n";
 }
+
 signed main(){
     #ifndef ONLINE_JUDGE
-freopen("Error.txt", "w", stderr);
-#endif
+    freopen("Error.txt", "w", stderr);
+    #endif
     code by Aditya
     int t;cin>>t;
     while(t--){

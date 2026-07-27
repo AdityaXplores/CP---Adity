@@ -34,10 +34,6 @@ typedef map<int,int> m;
 #define py cout<<"YES\n";
 #define pm cout<<"-1\n";
 #define pn cout<<"NO\n";
-#define sort(x) sort(x.begin(),x.end());
-#define rsort(x) sort(x.begin(),x.end(),greater<int>());
-#define sz(x) ((int)(x).size());
-#define all(x) (x).begin(), (x).end()
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 //operators overloads
 template<typename T1, typename T2> // cin >> pair<T1, T2>
@@ -91,7 +87,46 @@ vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 void solve(){
+    int n, k;
+    cin >> n >> k;
 
+    vec a(n);
+    cin >> a;
+    
+    vec lens;
+
+    int cur = 1;
+    fr (i, 1, n-1) 
+        if (a[i] != a[i - 1]) 
+        {
+            lens.pb(cur);
+            cur = 1;
+        } 
+        else cur++;
+    lens.pb(cur);
+    sort(lens.begin(), lens.end());
+
+    int m = (int)lens.size();
+    int d = 0;
+
+    int ans = 0;
+    int i = 0;
+    while(i < m)
+    {
+        int len = lens[i];
+        int x = len - 1;
+        int q = m - i;
+        int curLen = n - d - x * q;
+        if (curLen <= k && (k - curLen) % q == 0)
+            ans++;
+            
+        int j = i;
+        while (j < m && lens[j] == len)
+            j++;
+        d += (j - i) * lens[i];
+        i = j;
+    }
+    cout << ans << '\n';
 }
 signed main(){
     #ifndef ONLINE_JUDGE

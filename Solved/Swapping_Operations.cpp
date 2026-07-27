@@ -29,14 +29,18 @@ typedef map<int,int> m;
 #define ff first
 #define ss second
 #define pb push_back
-#define cut pop_back
+#define qb pop_back
+#define pf push_front
+#define qf pop_front
 #define fr(i,st,end) for(int i=st;i<=end;i++)
 #define frr(i,st,end) for(int i=st;i>=end;i--)
 #define py cout<<"YES\n";
 #define pm cout<<"-1\n";
 #define pn cout<<"NO\n";
-#define sort(x) sort(x.begin(),x.end());
-#define rsort(x) sort(x.begin(),x.end(),greater<int>());
+#define maxe max_element
+#define mine min_element
+#define allsort(x) sort(all(x))
+#define rallsort(x) sort(all(x), greater<int>())
 #define sz(x) ((int)(x).size());
 #define all(x) (x).begin(), (x).end()
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -96,28 +100,90 @@ vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int 
 //2)Dry run on Each Sample Test Case
 //3)Try Extreme test cases min and max
 //A)Brute Force B)Math with optimization C) Math with implemention
-
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+//                                                              “बलिदानं परमं धर्मः”
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 void solve(){
     //code here
-        ll x, y;
-        cin >> x >> y;  // Read coordinates (x, y)
-        ll ans;
-        if (x <= y) {
-            // Vertical Line Values : Border Cell -- Top Right
-            if (y % 2 == 0) {
-                ans = (y - 1) * (y - 1) + x;
-            } else {
-                ans = y * y - x + 1;
-            }
-        } else {
-            // Horizontal Line Values : Border Cell -- Bottom Left
-            if (x % 2 == 0) {
-                ans = x * x - y + 1;
-            } else {
-                ans = (x - 1) * (x - 1) + y;
-            }
+    int n;cin>>n;string s;cin>>s;
+int c1=0,cq=0;
+vec p0(n+1,0),p1(n+1,0),pq(n+1,0);
+fr(i,0,n-1){
+    p0[i+1]=p0[i]+(s[i]=='0');
+    p1[i+1]=p1[i]+(s[i]=='1');
+    pq[i+1]=pq[i]+(s[i]=='?');
+    if(s[i]=='1')c1++;
+    if(s[i]=='?')cq++;
+}
+int mn=n;
+fr(C,c1,c1+cq){
+    if(C==0){
+        mn=0;
+        continue;
+    }
+    fr(i,0,n-C){
+        int z=p0[i+C]-p0[i];
+        int o=p1[i+C]-p1[i];
+        int q=pq[i+C]-pq[i];
+        int o2=c1-o;
+        int q2=cq-q;
+        int R=z-o2;
+        if(R>=-q&&R<=q2){
+            mn=min(mn,max(z,o2));
         }
-        cout << ans << "\n";
+    }
+}
+int mx=0;
+fr(C,c1,c1+cq){
+    if(C==0)continue;
+    int q0=c1+cq-C;
+    int l=0,r=C,best=0;
+    while(l<=r){
+        int m=(l+r)/2;
+        vector<bool>u(n,false);
+        vec par(n);
+        fr(i,0,n-1)par[i]=i-1;
+        auto gl=[&](int x){
+            int cur=x;
+            while(cur>=0&&!(s[cur]=='?'&&!u[cur]))cur=par[cur];
+            int p=x;
+            while(p>=0&&p!=cur){
+                int nx=par[p];
+                par[p]=cur;
+                p=nx;
+            }
+            return cur;
+        };
+        bool ok=1;
+        int pl=0,cur=0;
+        fr(i,0,n-C){
+            if(i>0&&u[i-1])cur--;
+            int z=p0[i+C]-p0[i];
+            int req=max(0,m-z);
+            while(cur<req){
+                int pos=gl(i+C-1);
+                if(pos<i){
+                    ok=0;
+                    break;
+                }
+                u[pos]=1;
+                cur++;
+                pl++;
+                if(pl>q0){
+                    ok=0;
+                    break;
+                }
+            }
+            if(!ok)break;
+        }
+        if(ok&&pl<=q0){
+            best=m;
+            l=m+1;
+        }else r=m-1;
+    }
+    mx=max(mx,best);
+}
+cout<<mn<<" "<<mx<<"\n";
 }
 int32_t main(){
     #ifndef ONLINE_JUDGE
@@ -125,6 +191,7 @@ int32_t main(){
     #endif
     code by Adity
     int t; cin >> t;
+    //int t=1;
     while(t--){
         solve();
     }

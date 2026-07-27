@@ -90,8 +90,51 @@ int BSAns(int st,int end,vector<int>arr){int ans=-1;while(st<=end){int mid=st+(e
 vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=1;i<=arr.size();i++){ans[i]=arr[i]+ans[i-1];}return ans;}
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-void solve(){
+ll G(ll v, ll K, ll H) {
+    ll cost = 0;
+    ll min_total = 2e18; 
+    while (v > 0) {
+        ll p = 1;
+        while (p * 2 <= v) p *= 2;
+        if (p == v) {
+            min_total = min(min_total, cost);
+            break;
+        }
+        ll optA = cost + (p * 2 - v) * K;
+        min_total = min(min_total, optA);
+        cost += H;
+        v -= p;
+    }
+    return min_total;
+}
 
+ll solve_pair(ll X, ll Y, ll K, ll H) {
+    if (X >= Y) return (X - Y) * K;
+    while (X < Y) {
+        ll nx = X + (X & -X);
+        if (nx <= Y) {
+            X = nx;
+        } else {
+            break;
+        }
+    }
+    if (X == Y) return 0;
+    ll nx = X + (X & -X);
+    ll optA = (nx - Y) * K;
+    ll optB = H + G(Y - X, K, H);
+    return min(optA, optB);
+}
+void solve(){
+    ll n, k, h;
+    cin >> n >> k >> h;
+    vll a(n);
+    cin >> a;
+    
+    ll total_cost = 0;
+    fr(i, 0, n - 2){
+        total_cost += solve_pair(a[i], a[i+1], k, h);
+    }
+    cout << total_cost << "\n";
 }
 signed main(){
     #ifndef ONLINE_JUDGE

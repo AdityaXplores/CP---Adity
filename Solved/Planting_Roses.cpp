@@ -1,6 +1,6 @@
 #include "bits/stdc++.h"
 using namespace std;
-/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 #define code ios_base::sync_with_stdio(false);
 #define by cin.tie(NULL);
 #define Aditya cout.tie(NULL);
@@ -16,15 +16,13 @@ typedef vector<pll> vpll;
 typedef vector<string> vs;
 typedef unordered_map<ll,ll> umll;
 typedef map<ll,ll> mll;
-/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-//stl containers
+
 typedef pair<int,int> p;
 typedef vector<int> vec;
 typedef vector<p> vecp;
-typedef vector<string> vs;
 typedef unordered_map<int,int> um;
 typedef map<int,int> m;
-/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 #define ff first
 #define ss second
 #define pb push_back
@@ -34,21 +32,18 @@ typedef map<int,int> m;
 #define py cout<<"YES\n";
 #define pm cout<<"-1\n";
 #define pn cout<<"NO\n";
-#define sort(x) sort(x.begin(),x.end());
-#define rsort(x) sort(x.begin(),x.end(),greater<int>());
+#define rsort(x) sort(x.begin(),x.end(),greater<ll>());
 #define sz(x) ((int)(x).size());
-#define all(x) (x).begin(), (x).end()
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-//operators overloads
-template<typename T1, typename T2> // cin >> pair<T1, T2>
+
+template<typename T1, typename T2> 
 istream& operator>>(istream &istream, pair<T1, T2> &p) { return (istream >> p.first >> p.second); }
-template<typename T> // cin >> vector<T>
+template<typename T> 
 istream& operator>>(istream &istream, vector<T> &v){for (auto &it : v) cin >> it;return istream;}
-template<typename T1, typename T2> // cout << pair<T1, T2>
+template<typename T1, typename T2> 
 ostream& operator<<(ostream &ostream, const pair<T1, T2> &p) { return (ostream << p.first << " " << p.second); }
-template<typename T> // cout << vector<T>
+template<typename T> 
 ostream& operator<<(ostream &ostream, const vector<T> &c) { for (auto &it : c) cout << it << " "; return ostream; }
-/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 ll gcd(ll a, ll b){if (b == 0)return a;return gcd(b, a % b);}
 ll lcm(ll a, ll b){return (a/gcd(a,b)*b);}
 ll modMul(ll a,ll b,ll mod){ll res = 0;a %= mod;while (b){if (b & 1)res = (res + a) % mod;b >>= 1;}return res;}
@@ -56,7 +51,7 @@ ll powermod(ll x, ll y, ll p){ll res = 1;x = x % p;if (x == 0) return 0;while (y
 bool isPrime(ll n){if(n<=1)return false;if(n<=3)return true;if(n%2==0||n%3==0)return false;for(int i=5;i*i<=n;i=i+6)if(n%i==0||n%(i+2)==0)return false;return true;}
 bool isPowerOfTwo(int n){if(n==0)return false;return (ceil(log2(n)) == floor(log2(n)));}
 bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}return false;}
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
 #else
@@ -79,26 +74,68 @@ template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_prin
 template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-//binary search section
+
 int LB(vector<ll>arr,ll key){auto lower = lower_bound(arr.begin(), arr.end(), key); if (lower != arr.end()) {return lower - arr.begin(); } return -1; }
 int UB(vector<ll>arr,ll key){auto upper = upper_bound(arr.begin(), arr.end(), key);if (upper != arr.begin()&&(upper-arr.begin())<arr.size()) {return upper - arr.begin();}return -1;}
 bool checkerFunction(int x,vector<int>&arr){return true;}
 int BSAns(int st,int end,vector<int>arr){int ans=-1;while(st<=end){int mid=st+(end-st)/2;if(checkerFunction(mid,arr)){ }else{}}return ans;}
-/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-//prefix suffix section 1 based
 vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=1;i<=arr.size();i++){ans[i]=arr[i]+ans[i-1];}return ans;}
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
-/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-void solve(){
 
+void solve(){
+    ll n, m, k; cin >> n >> m >> k;
+    ll cnt_k = 0;
+    vll rem;
+    
+    fr(i, 0, n - 1) {
+        ll a;
+        cin >> a;
+        cnt_k += a / k;
+        if(a % k > 0) {
+            rem.pb(a % k);
+        }
+    }
+    sort(rem.rbegin(), rem.rend());
+    ll cap = m + 1; 
+    ll ans = 0;
+    
+    ll take_k = min(cnt_k, cap / (k + 1));
+    ans += take_k * k;
+    cap -= take_k * (k + 1);
+    
+    if(take_k < cnt_k) {
+        if(cap > 0) ans += cap - 1;
+    } else {
+        int sz = rem.size();
+        vll pref_cost(sz + 1, 0);
+        vll pref_roses(sz + 1, 0);
+        
+        fr(i, 0, sz - 1) {
+            pref_cost[i + 1] = pref_cost[i] + rem[i] + 1;
+            pref_roses[i + 1] = pref_roses[i] + rem[i];
+        }
+        
+        auto it = upper_bound(pref_cost.begin(), pref_cost.end(), cap);
+        int idx = (it - pref_cost.begin()) - 1;
+        
+        if(idx >= 0) {
+            ans += pref_roses[idx];
+            cap -= pref_cost[idx];
+        }
+        
+        if(cap > 0 && idx < sz) {
+            ans += cap - 1;
+        }
+    }
+    cout << ans << "\n";
 }
+
 signed main(){
     #ifndef ONLINE_JUDGE
-freopen("Error.txt", "w", stderr);
-#endif
+    freopen("Error.txt", "w", stderr);
+    #endif
     code by Aditya
-    int t;cin>>t;
+    int t; cin >> t;
     while(t--){
         solve();
     }

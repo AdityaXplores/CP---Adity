@@ -90,8 +90,39 @@ int BSAns(int st,int end,vector<int>arr){int ans=-1;while(st<=end){int mid=st+(e
 vector<int> buildPrefix(vector<int>&arr){vector<int>ans(arr.size(),0);for(int i=1;i<=arr.size();i++){ans[i]=arr[i]+ans[i-1];}return ans;}
 vector<int> buildSuffix(vector<int>&arr){vector<int>ans(arr.size()+1,0);for(int i=arr.size()-1;i>=1;i--){ans[i]=ans[i+1]+arr[i];}return ans;}
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-void solve(){
-
+int solve(){
+    int n, s; cin >> n >>s;
+    vector<int> a(n);
+    fr(i, 0, n-1) cin >> a[i];
+    int x = count(a.begin(), a.end(), 1);
+    vector<int> b = a;
+    reverse(b.begin(), b.end());
+    if ( x == s) {
+        cout << 0 <<endl;
+        return;
+    }
+    if(s > x) {
+        cout << -1 <<endl;
+        return;
+    }
+    auto i = find(a.begin(), a.end(), 1);
+    auto j = find(b.begin(), b.end(), 1);
+    int ind1 = i - a.begin();
+    int ind2 = j - b.begin();
+    int res = 0;
+    while(x != s){
+        if( i <= j ) {
+            a.erase(a.begin() + i);
+            x--;
+            res++;
+        }
+        else if(j < i){
+            b.erase(b.begin() + j);
+            x--;
+            res++;
+        }
+    }
+    return res;
 }
 signed main(){
     #ifndef ONLINE_JUDGE
